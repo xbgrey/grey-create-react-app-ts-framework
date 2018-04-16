@@ -1,0 +1,24 @@
+{
+  "name": "kts-scaffold-framework",
+  "version": "1.0.1",
+  "description": "【前端】2.0脚手架框架部分",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kingxunlian/kts-scaffold-framework.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kingxunlian/kts-scaffold-framework/issues"
+  },
+  "homepage": "https://github.com/kingxunlian/kts-scaffold-framework#readme",
+  "dependencies": {
+    "@types/react": "^16.3.10",
+    "history": "^4.7.2",
+    "react": "^16.3.1"
+  }
+}
