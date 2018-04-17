@@ -1,6 +1,5 @@
-import { CallType } from 'src/utils/ajax';
+import { CallType } from '../../utils/ajax';
 import { Response } from '../';
-import { Urls } from 'src/entry/constant';
 
 /** Api请求数据 */
 export default class Request {
@@ -9,7 +8,7 @@ export default class Request {
     public type: CallType = CallType.GET;
 
     /** api地址 */
-    public uri: Urls;
+    public uri: string;
 
     /** 回掉函数 */
     public callback: (value: Response<any>) => void = null;
@@ -29,7 +28,7 @@ export default class Request {
      * @param uri api地址
      * @param params  请求参数
      */
-    constructor(type: CallType, uri: Urls, params: any) {
+    constructor(type: CallType, uri: string, params: any) {
         this.uri = uri;
         this.params = params;
         this.type = type;

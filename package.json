@@ -1,6 +1,6 @@
 {
   "name": "kts-scaffold-framework",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "【前端】2.0脚手架框架部分",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,10 @@
   "homepage": "https://github.com/kingxunlian/kts-scaffold-framework#readme",
   "dependencies": {
     "@types/react": "^16.3.10",
+    "@types/superagent": "^3.5.8",
+    "antd": "^3.4.1",
     "history": "^4.7.2",
-    "react": "^16.3.1"
+    "react": "^16.3.1",
+    "tsc": "^1.20150623.0"
   }
 }

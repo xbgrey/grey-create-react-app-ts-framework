@@ -1,6 +1,5 @@
-import Superagent from 'src/utils/ajax/Superagent';
+import Superagent from '../../utils/ajax/Superagent';
 import { Request, Response } from '../';
-import { MyStore, reducers } from 'src/redux';
 import Message from 'antd/lib/message';
 
 export default class Agent {
@@ -32,12 +31,7 @@ export default class Agent {
     public call = (request: Request, domain: string, mock: boolean): Promise<Response<any>> => {
         return new Promise((resolve: (value: Response<any>) => void) => {
 
-            MyStore.instance.dispatch(reducers.system.ActionTypes.addLoading, request.uri); // 添加loading
-
-            const { env } = MyStore.instance.getState();
             const superagentCallback = (er, body) => {
-
-                MyStore.instance.dispatch(reducers.system.ActionTypes.removeLoading, request.uri); // 删除loading
 
                 const info: Response<any> = new Response(); // 返回数据
 
@@ -57,7 +51,7 @@ export default class Agent {
                 this.runCallback(info, request.callback, resolve); // 调用回掉
             };
 
-            if (mock && env.IS_MOCK && window['$$_kxl_mock'] && window['$$_kxl_mock'][request.uri]) {
+            if (mock && window['$$_kxl_mock'] && window['$$_kxl_mock'][request.uri]) {
                 setTimeout(
                     () => {
                         console.info('[mock][' + request.uri + ']', window['$$_kxl_mock'][request.uri]);
