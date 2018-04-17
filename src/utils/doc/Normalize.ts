@@ -65,30 +65,8 @@ const integer=(value, old)=>{
     }
 } 
 
-/** 数字格式化 */
-const toThousands=(_num)=>{
-    let num = (_num || 0).toString(), result = '';
-    let numnext = "";
-    let numpre = "";
-    if(num.indexOf('.')>=0){
-        numnext = num.substring(num.indexOf('.'),num.length);//小数点后
-        numpre = num.substring(0,num.indexOf('.'));//小数点前
-    }else{
-        numnext=".00";
-        numpre = num;
-    }
-    while (numpre.length > 3) {
-        result = ',' + numpre.slice(-3) + result;
-        numpre = numpre.slice(0, numpre.length - 3);
-    }
-    if (numpre) { result = numpre + result; }
-    if(numnext){result+=numnext }
-    return result;
-}
-
 export default {
     percentage,
     integer,
     decimal, 
-    toThousands
 }
