@@ -1,4 +1,4 @@
-import moment, { Moment } from "moment";
+import moment from "moment";
 
 /**
  * 时间转 YYYY-MM-DD HH:mm
