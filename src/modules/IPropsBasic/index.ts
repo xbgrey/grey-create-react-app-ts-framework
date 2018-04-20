@@ -9,7 +9,7 @@ export default interface IPropsBasic {
         params: any,
         path: string,
         url: string,
-    };  
+    };
 
     history?: History;
     location?: Location;
