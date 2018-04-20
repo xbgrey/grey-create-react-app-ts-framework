@@ -1,6 +1,5 @@
 import Superagent from '../../utils/ajax/Superagent';
 import { Request, Response } from '../';
-import Message from 'antd/lib/message';
 
 export default class Agent {
 
@@ -32,22 +31,7 @@ export default class Agent {
         return new Promise((resolve: (value: Response<any>) => void) => {
 
             const superagentCallback = (er, body) => {
-
-                const info: Response<any> = new Response(); // 返回数据
-
-                // 是否失败
-                if (er) {
-                    info.er = er;
-                    this.showMessage(request, '服务器异常');
-                } else {
-                    if (body.ok) {
-                        info.body = body.body;
-                    } else {
-                        info.er = body;
-                        this.showMessage(request, body.status.description || '系统错误');
-                    }
-                }
-
+                const info: Response<any> = new Response(er, body); // 返回数据
                 this.runCallback(info, request.callback, resolve); // 调用回掉
             };
 
@@ -74,17 +58,5 @@ export default class Agent {
                 fn(value);
             }
         });
-    }
-
-    /**
-     * 提示消息管理
-     * @param request 请求消息头
-     * @param message 发送的消息
-     */
-    private showMessage = (request: Request, message: string): void => {
-        if (request.isShowModal === false) {
-            return null;
-        }
-        Message.error(message);
     }
 }

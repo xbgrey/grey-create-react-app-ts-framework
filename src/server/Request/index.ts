@@ -19,9 +19,6 @@ export default class Request {
     /** 请求头部信息 */
     public options: any = {};
 
-    /** 是否显示错误信息 */
-    public isShowModal: boolean = true;
-
     /**
      * 构造函数
      * @param type  请求类型
