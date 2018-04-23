@@ -22,7 +22,7 @@ export default abstract class ActionBasic<ModulesState> {
      * @param {Function} callBack 设置完成后的回掉
      */
     protected setModulesState = (state: ModulesState, callBack?: () => {}) => {
-        this._modulesState = state;
+        this.modules.setState({ key: Math.random()*10000+new Date().getTime() } as any);
         this.modules.setState(state, callBack);
     }
 
