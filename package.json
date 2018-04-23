@@ -1,10 +1,10 @@
 {
   "name": "kts-scaffold-framework",
-  "version": "1.0.11",
+  "version": "1.0.14",
   "description": "【前端】2.0脚手架框架部分",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "publish":"npm publish bin"
   },
   "repository": {
     "type": "git",
