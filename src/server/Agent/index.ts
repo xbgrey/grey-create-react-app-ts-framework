@@ -30,8 +30,8 @@ export default class Agent {
     public call = (request: Request, domain: string, mock: boolean): Promise<Response<any>> => {
         return new Promise((resolve: (value: Response<any>) => void) => {
 
-            const superagentCallback = (er, body) => {
-                const info: Response<any> = new Response(er, body); // 返回数据
+            const superagentCallback = (er, res) => {
+                const info: Response<any> = new Response(er, res); // 返回数据
                 this.runCallback(info, request.callback, resolve); // 调用回掉
             };
 

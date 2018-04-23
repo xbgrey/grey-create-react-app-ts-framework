@@ -24,7 +24,7 @@ function call(type: CallType, uri: string, fnCallback: (er: any, body: any) => v
             if (err) {
                 fnCallback(err, null);
             } else {
-                fnCallback(null, res.body);
+                fnCallback(null, res);
             }
         })
         .timeout(5000);
