@@ -7,11 +7,11 @@ export default class Response<T> {
     public er: any;
 
     /** 响应内容 */
-    public body: T;
+    public res: T;
 
     /** 构造函数 */
-    constructor(er?: any, body?: T) {
+    constructor(er?: any, res?: T) {
         this.er = er;
-        this.body = body;
+        this.res = res;
     }
 }

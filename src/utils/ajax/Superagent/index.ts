@@ -1,4 +1,5 @@
 import * as request from 'superagent';
+import IResponse from '../IResponse';
 import { CallType } from '../../ajax';
 import { JSObject } from '../../kit';
 
@@ -10,7 +11,7 @@ import { JSObject } from '../../kit';
  * @param params 参数
  * @param options 请求头
  */
-function call(type: CallType, uri: string, fnCallback: (er: any, body: any) => void, params: any, options: any = {}) {
+function call(type: CallType, uri: string, fnCallback: (er: any, res: IResponse) => void, params: any, options: any = {}) {
     options = {
         'Content-Type': 'application/json',
         ...options,

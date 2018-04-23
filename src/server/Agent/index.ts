@@ -1,4 +1,5 @@
 import Superagent from '../../utils/ajax/Superagent';
+import IResponse from '../../utils/ajax/IResponse';
 import { Request, Response } from '../';
 
 export default class Agent {
@@ -27,11 +28,11 @@ export default class Agent {
      * @param domain 请求地址头
      * @param mock 是否用mock数据
      */
-    public call = (request: Request, domain: string, mock: boolean): Promise<Response<any>> => {
-        return new Promise((resolve: (value: Response<any>) => void) => {
+    public call = (request: Request, domain: string, mock: boolean): Promise<Response<IResponse>> => {
+        return new Promise((resolve: (value: Response<IResponse>) => void) => {
 
-            const superagentCallback = (er, res) => {
-                const info: Response<any> = new Response(er, res); // 返回数据
+            const superagentCallback = (er:any, res:IResponse) => {
+                const info: Response<IResponse> = new Response(er, res); // 返回数据
                 this.runCallback(info, request.callback, resolve); // 调用回掉
             };
 

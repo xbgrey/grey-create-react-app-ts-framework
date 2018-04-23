@@ -1,6 +1,6 @@
 {
   "name": "kts-scaffold-framework",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "【前端】2.0脚手架框架部分",
   "main": "index.js",
   "scripts": {
