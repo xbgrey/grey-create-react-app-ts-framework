@@ -19,6 +19,9 @@ export default class Request {
     /** 请求头部信息 */
     public options: any = {};
 
+    /** 是否显示提示消息 */
+    public isMessage: boolean = false;
+
     /**
      * 构造函数
      * @param type  请求类型
