@@ -20,7 +20,7 @@ export default class Request {
     public options: any = {};
 
     /** 是否显示提示消息 */
-    public isMessage: boolean = false;
+    public isMessage: boolean = true;
 
     /**
      * 构造函数

@@ -17,30 +17,14 @@ class MessageItem {
 
 class Message {
 
-    private static _instance: Message;
-
-    private typeId: number = 0;
+    private static typeId: number = 0;
 
     /** 注册项列表 */
     private registerList: MessageItem[] = [];
 
-    constructor() {
-        if(Message._instance){
-            throw "类为单利";
-        }  
-    }
-
-    public static get instance(): Message {
-        if (!Message._instance) {
-            Message._instance = new Message();
-        }
-
-        return Message._instance;
-    }
-
     /** 创建消息类型 */
-    public createType = (name: string): string => {
-        return `${name}@@${this.typeId++}`;
+    public static createType = (name: string): string => {
+        return `${name}@@${Message.typeId++}`;
     }
 
     /**
