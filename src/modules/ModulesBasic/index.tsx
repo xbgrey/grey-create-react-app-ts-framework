@@ -1,3 +1,4 @@
+import * as React from 'react';
 import ComponentBasic from '../../component/ComponentBasic';
 import { ActionBasic } from '../';
 
@@ -18,3 +19,20 @@ export default abstract class ModulesBasic<P, ModulesState> extends ComponentBas
         return this._action.modulesState;
     }
 }
+
+/** 模块的跟 */
+class ModulesRoot extends React.PureComponent<{ action: ActionBasic<any> }, any> {
+
+    componentDidUpdate() {
+        this.props.action.sendUpdateEvent();
+    }
+
+    render() {
+        return this.props.children;
+    }
+}
+
+export {
+    /** 模块的跟 */
+    ModulesRoot
+};

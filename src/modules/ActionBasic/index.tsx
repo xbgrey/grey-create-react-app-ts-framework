@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ModulesBasic } from '../';
 import { Message, Event } from '../../message';
+import ComponentBasic from '../../component/ComponentBasic';
 
 /** 更新了Start事件 */
 class UpdateEvent extends Event {
@@ -31,9 +32,9 @@ export default abstract class ActionBasic<ModulesState> {
     }
 
     /** 绑定组件 */
-    public uiconnect = (Dmo): any => {
+    public uiconnect = (UIDom): any => {
         const self: ActionBasic<ModulesState> = this;
-        return class MyContainer extends React.PureComponent<any, any> {
+        return class MyContainer extends ComponentBasic<any, any> {
 
             constructor(props: any) {
                 super(props);
@@ -50,35 +51,35 @@ export default abstract class ActionBasic<ModulesState> {
 
             render() {
                 return (
-                    <Dmo
-                        {...this.props}
+                    <UIDom
                         {...self.modules.props}
                         modulesState={this.state.modulesState}
+                        {...this.props}
                     >
                         {this.props.children}
-                    </Dmo>
+                    </UIDom>
                 );
             }
 
             private onUpdateHandler = () => {
-                this.setState({ modulesState: self.modules.state });
+                this.setState({ ...self.modules.props, modulesState: self.modules.state, ...this.props });
             }
         };
+    }
+
+    /** 发起更新 */
+    public sendUpdateEvent() {
+        this.message.send(new UpdateEvent());
     }
 
     /**
      * 设置当前模块的状态
      * @param {*} state 状态
-     * @param {Function} callBack 设置完成后的回掉
+     * @param {Function} callBack 设置完成后的回调
      */
     protected setModulesState = (state: ModulesState, callBack?: () => {}) => {
         this.modules.setState({ key: Math.random() * 10000 + new Date().getTime() } as any);
-        this.modules.setState(state, () => {
-            this.message.send(new UpdateEvent());
-            if (typeof callBack === 'function') {
-                callBack();
-            }
-        });
+        this.modules.setState(state, callBack);
     }
 
     /** 当前模块的状态 */
