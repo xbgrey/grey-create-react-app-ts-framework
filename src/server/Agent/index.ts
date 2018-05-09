@@ -40,7 +40,11 @@ export default class Agent {
                 setTimeout(
                     () => {
                         console.info('[mock][' + request.uri + ']', window['$$_kxl_mock'][request.uri]);
-                        superagentCallback(null, window['$$_kxl_mock'][request.uri]);
+                        const res = {
+                            body:window['$$_kxl_mock'][request.uri],
+                            ok: true
+                        };
+                        superagentCallback(null, res as IResponse);
                     }, 100);
             } else {
                 Superagent.call(request.type, domain + request.uri, superagentCallback, request.params, request.options);

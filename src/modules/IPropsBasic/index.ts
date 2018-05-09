@@ -1,8 +1,8 @@
 import { History, Location } from 'history';
-import { FormComponentProps } from 'antd/lib/form/Form';
+import { WrappedFormUtils } from 'antd/lib/form/Form';
 
 /** 组建的props接口 */
-export default interface IPropsBasic extends FormComponentProps{
+export default interface IPropsBasic {
 
     match?: {
         isExact: boolean,
@@ -13,4 +13,6 @@ export default interface IPropsBasic extends FormComponentProps{
 
     history?: History;
     location?: Location;
+
+    form?: WrappedFormUtils;
 }
