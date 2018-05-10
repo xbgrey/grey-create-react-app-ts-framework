@@ -28,7 +28,7 @@ export default class Request {
      * @param uri api地址
      * @param params  请求参数
      */
-    constructor(type: CallType, uri: string, params: any) {
+    constructor(type: CallType, uri: string, params: any = {}) {
         this.uri = uri;
         this.params = params;
         this.type = type;
