@@ -47,7 +47,7 @@ export default class Agent {
                         superagentCallback(null, res as IResponse);
                     }, 100);
             } else {
-                Superagent.call(request.type, domain + request.uri, superagentCallback, request.params, request.options);
+                Superagent.call(request.type, domain + request.uri, superagentCallback, JSON.stringify(request.params), request.options);
             }
         });
     }
